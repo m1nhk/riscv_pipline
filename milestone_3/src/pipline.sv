@@ -58,6 +58,7 @@ wire [31:0] o_rs1_dataE, o_rs2_dataE;
 wire [31:0] immE;
 wire [4:0] rdE, rs1E, rs2E;
 wire [6:0] opcodeE;
+wire [31:0] instrE;
 
 wire [31:0] op_a, op_b;
 wire [1:0] forw_a_sel, forw_b_sel;
@@ -181,6 +182,7 @@ ID_IE ID_IE (
     .rs2D (instrD[24:20]),
     .opcodeD (instrD[6:0]),
     .insn_vld (insn_vld),
+    .instrD (instrD),
     .stallE (stallE),
     .flushE (flushE),
     .rd_wrenE (rd_wrenE),
@@ -201,7 +203,8 @@ ID_IE ID_IE (
     .rs1E (rs1E),
     .rs2E (rs2E),
     .opcodeE (opcodeE),
-    .insn_vldE (insn_vldE)
+    .insn_vldE (insn_vldE),
+    .instrE (instrE)
 );
 
 IE_IM IE_IM (
@@ -280,7 +283,7 @@ brc brc (
 );
 
 controlB controlB (
-    .instr (instr),
+    .instr (instrE),
     .br_equal (br_equal),
     .br_less (br_less),
     .opcodeE (opcodeE),

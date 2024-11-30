@@ -16,6 +16,7 @@ module ID_IE (
     input logic [6:0] opcodeD,
     input logic stallE, flushE,
     input logic insn_vld,
+    input logic [31:0] instrD,
 
     output logic rd_wrenE,
     output logic [1:0] wb_selE,
@@ -30,11 +31,12 @@ module ID_IE (
     output logic [31:0] immE,
     output logic [4:0] rdE, rs1E, rs2E,
     output logic [6:0] opcodeE,
-    output logic insn_vldE
+    output logic insn_vldE,
+    output logic [31:0] instrE
 );
 
 always_ff @(posedge i_clk or negedge i_rst_n) begin 
-    if (!i_rst_n | flushE) begin
+    if (!i_rst_n || flushE) begin
         rd_wrenE <= 0;
         wb_selE <= 0;
         mem_wrenE <= 0;
@@ -54,6 +56,7 @@ always_ff @(posedge i_clk or negedge i_rst_n) begin
         rs2E <= 0;
         opcodeE <= 0;
         insn_vldE <= 0;
+        instrE <= 0;
     end else if (stallE) begin
         rd_wrenE <= rd_wrenE;
         wb_selE <= wb_selE;
@@ -74,6 +77,7 @@ always_ff @(posedge i_clk or negedge i_rst_n) begin
         rs2E <= rs2E;
         opcodeE <= opcodeE;
         insn_vldE <= insn_vldE;
+        instrE <= instrE;
     end else begin
         rd_wrenE <= rd_wrenD;
         wb_selE <= wb_selD;
@@ -94,6 +98,7 @@ always_ff @(posedge i_clk or negedge i_rst_n) begin
         rs2E <= rs2D;
         opcodeE <= opcodeD;
         insn_vldE <= insn_vld;
+        instrE <= instrD;
     end
 end
 

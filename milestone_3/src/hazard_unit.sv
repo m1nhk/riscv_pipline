@@ -39,21 +39,18 @@ always_comb begin
         stallD = 1'b1;
     end 
 
-    if (br_sel && (rdM != 0) && ((opcodeE == 7'b1100011) && ((rdWB == rs1E) || (rdWB == rs2E)))) begin // Branch instruction
+    if (br_sel) begin // Branch instruction
         flushD = 1'b1;
-        stallF = 1'b1;
         flushE = 1'b1;
     end
 
     if (rd_wrenM && (rdM != 0) && opcodeE == 7'b1101111) begin // JAL hazard
         flushD = 1'b1;
-        stallF = 1'b1;
         flushE = 1'b1;
     end
 
-    if (rd_wrenM && (rdM != 0) && opcodeE == 7'b1100111 && ((rdWB == rs1E) || (rdWB == rs2E))) begin // JALR hazard
+    if (rd_wrenM && (rdM != 0) && opcodeE == 7'b1100111 && ((rdM == rs1E) || (rdM == rs2E))) begin // JALR hazard
         flushD = 1'b1;
-        stallF = 1'b1;
         flushE = 1'b1;
     end
 end

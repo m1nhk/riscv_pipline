@@ -24,7 +24,14 @@ always @(posedge i_clk or negedge i_rst_n) begin
 	end
 end
 
-assign o_rs1_data = (i_rd_wren && (i_rd_addr == i_rs1_addr)) ? i_rd_data : register[i_rs1_addr];
-assign o_rs2_data = (i_rd_wren && (i_rd_addr == i_rs2_addr)) ? i_rd_data : register[i_rs2_addr];
+always_comb begin
+	o_rs1_data = (i_rd_wren && (i_rd_addr == i_rs1_addr)) ? i_rd_data : register[i_rs1_addr];
+	o_rs2_data = (i_rd_wren && (i_rd_addr == i_rs2_addr)) ? i_rd_data : register[i_rs2_addr];
+end
+
+// always_comb begin
+//     o_rs1_data = register[i_rs1_addr];
+//     o_rs2_data = register[i_rs2_addr];
+// end
 
 endmodule

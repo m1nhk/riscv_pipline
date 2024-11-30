@@ -31,7 +31,7 @@ module IE_IM (
 );
 
 always_ff @(posedge i_clk or negedge i_rst_n) begin 
-    if (!i_rst_n | flushM) begin
+    if (!i_rst_n || flushM) begin
         rd_wrenM <= 0;
         wb_selM <= 0;
         mem_wrenM <= 0;

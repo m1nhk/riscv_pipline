@@ -135,7 +135,6 @@ class Vtop___024root final : public VerilatedModule {
         CData/*0:0*/ top__DOT__pipline__DOT__brc__DOT__ripple_adder__DOT__genblk1__BRA__30__KET____DOT__adder__DOT__w1;
         CData/*0:0*/ top__DOT__pipline__DOT__brc__DOT__ripple_adder__DOT__genblk1__BRA__31__KET____DOT__adder__DOT__w1;
         CData/*7:0*/ top__DOT__pipline__DOT__lsu__DOT__led_g_reg;
-        CData/*0:0*/ top__DOT__pipline__DOT__hazard_unit__DOT__branchE;
         CData/*0:0*/ __Vclklast__TOP__i_clk;
         CData/*0:0*/ __Vclklast__TOP__i_rst_n;
         VL_IN(i_io_sw,31,0);
@@ -143,12 +142,11 @@ class Vtop___024root final : public VerilatedModule {
         VL_OUT(o_io_lcd,31,0);
         VL_OUT(o_io_ledg,31,0);
         VL_OUT(o_io_ledr,31,0);
-        IData/*31:0*/ top__DOT__pipline__DOT__instr;
         IData/*31:0*/ top__DOT__pipline__DOT__alu_dataE;
-    };
-    struct {
         IData/*31:0*/ top__DOT__pipline__DOT__nxt_pc;
         IData/*31:0*/ top__DOT__pipline__DOT__pcF;
+    };
+    struct {
         IData/*31:0*/ top__DOT__pipline__DOT__pcD;
         IData/*31:0*/ top__DOT__pipline__DOT__pc_nxtD;
         IData/*31:0*/ top__DOT__pipline__DOT__instrD;
@@ -159,6 +157,7 @@ class Vtop___024root final : public VerilatedModule {
         IData/*31:0*/ top__DOT__pipline__DOT__o_rs1_dataE;
         IData/*31:0*/ top__DOT__pipline__DOT__o_rs2_dataE;
         IData/*31:0*/ top__DOT__pipline__DOT__immE;
+        IData/*31:0*/ top__DOT__pipline__DOT__instrE;
         IData/*31:0*/ top__DOT__pipline__DOT__op_a;
         IData/*31:0*/ top__DOT__pipline__DOT__op_b;
         IData/*31:0*/ top__DOT__pipline__DOT__alu_dataM;
